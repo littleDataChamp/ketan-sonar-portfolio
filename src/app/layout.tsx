@@ -28,10 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${syncopate.variable}`}>
-      <body className="antialiased min-h-screen flex flex-col">
+      <body className="antialiased min-h-screen flex flex-col overflow-x-hidden">
         <SmoothScroll>
           <Navigation />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow overflow-x-hidden">{children}</main>
           <Footer />
         </SmoothScroll>
       </body>

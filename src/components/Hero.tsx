@@ -87,7 +87,7 @@ export default function Hero() {
           <img 
             src="/ketan-sonar-portfolio/images/profile.png" 
             alt="Ketan Sonar"
-            className="h-full w-auto object-cover object-bottom scale-110 md:scale-[1.25] origin-bottom drop-shadow-2xl"
+            className="h-full w-auto object-cover object-bottom scale-110 md:scale-[1.25] origin-bottom drop-shadow-2xl brightness-[0.9] contrast-[1.1] saturate-[0.95]"
           />
         </motion.div>
 

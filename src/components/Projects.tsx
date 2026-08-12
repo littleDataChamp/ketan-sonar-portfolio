@@ -133,11 +133,8 @@ function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps)
   };
 
   return (
-    <motion.a
+    <motion.div
       ref={ref}
-      href={project.href}
-      target={project.href !== "#" ? "_blank" : undefined}
-      rel={project.href !== "#" ? "noopener noreferrer" : undefined}
       onMouseEnter={onHover}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -145,7 +142,7 @@ function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps)
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="group block relative w-full border-b border-brand-gray/30 pb-8 md:pb-16 cursor-none perspective-1000"
+      className="group block relative w-full border-b border-brand-gray/30 pb-8 md:pb-16 cursor-default perspective-1000"
     >
       <motion.div 
         style={{ rotateX, rotateY }}
@@ -173,9 +170,19 @@ function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps)
             <h4 className="text-xl md:text-2xl font-light text-brand-gray-dark mb-6 group-hover:translate-x-4 transition-transform duration-500 delay-75">
               {project.subtitle}
             </h4>
-            <p className="text-base md:text-lg text-brand-charcoal font-light leading-relaxed opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 delay-100 max-h-0 group-hover:max-h-40 overflow-hidden pr-4">
+            <p className="text-base md:text-lg text-brand-charcoal font-light leading-relaxed opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 delay-100 max-h-0 group-hover:max-h-40 overflow-hidden pr-4 mb-4">
               {project.description}
             </p>
+            {project.href !== "#" && (
+              <a 
+                href={project.href} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-charcoal text-white rounded-full font-bold text-sm tracking-wide opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 delay-150 hover:bg-brand-orange"
+              >
+                Visit Website ↗
+              </a>
+            )}
           </div>
 
           {/* Clean Editorial Image Reveal */}
@@ -197,6 +204,6 @@ function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps)
         </div>
         
       </motion.div>
-    </motion.a>
+    </motion.div>
   );
 }
