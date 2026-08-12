@@ -101,7 +101,7 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps) {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   
   // Sleek Parallax effect on mouse move
   const x = useMotionValue(0);
@@ -113,7 +113,7 @@ function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps)
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
