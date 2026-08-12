@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "WORK", href: "#projects" },
-  { name: "ABOUT", href: "#about" },
-  { name: "EXPERIENCE", href: "#experience" },
-  { name: "CONTACT", href: "#contact" },
+  { name: "WORK", href: "/projects" },
+  { name: "ABOUT", href: "/about" },
+  { name: "EXPERIENCE", href: "/experience" },
+  { name: "CONTACT", href: "/contact" },
 ];
 
 export default function Navigation() {

@@ -24,55 +24,57 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center pt-20 px-6 md:px-12 overflow-hidden">
-      {/* Background ambient gradient */}
-      <div className="absolute top-0 right-0 w-full md:w-2/3 h-full bg-gradient-to-bl from-brand-orange/5 via-brand-blue/5 to-transparent -z-10 blur-3xl opacity-50" />
-
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="max-w-7xl mx-auto w-full"
-      >
-        <motion.p variants={itemVariants} className="text-sm md:text-base font-semibold tracking-[0.2em] text-brand-orange mb-6">
-          KETAN SONAR
-        </motion.p>
+    <section className="relative min-h-screen flex items-center pt-20 px-6 md:px-12 overflow-hidden bg-background">
+      {/* Massive Vibrant Gradient Background matching the reference */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-brand-purple/30 to-brand-orange/80 -z-20" />
+      
+      <div className="max-w-[100rem] mx-auto w-full flex flex-col md:flex-row relative z-10 h-full items-center">
         
-        <motion.h1 
-          variants={itemVariants}
-          className="font-display font-bold text-[4rem] md:text-8xl lg:text-[9rem] leading-[0.9] tracking-tighter mb-4"
+        {/* Left Side: Massive Typography */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="w-full md:w-3/5 flex flex-col justify-center z-20 mix-blend-difference text-background"
         >
-          DATA.<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple">AI.</span><br />
-          CLOUD.
-        </motion.h1>
+          <motion.h1 
+            variants={itemVariants}
+            className="font-display font-black text-[6rem] md:text-[12rem] lg:text-[18rem] leading-[0.75] tracking-tighter uppercase"
+          >
+            FOR<br />
+            DATA
+          </motion.h1>
 
-        <motion.h2 
-          variants={itemVariants}
-          className="text-2xl md:text-4xl lg:text-5xl font-medium tracking-tight mt-12 max-w-3xl"
-        >
-          BUILDING SYSTEMS<br />THAT MAKE DATA WORK.
-        </motion.h2>
-
-        <motion.div variants={itemVariants} className="mt-16 flex flex-col md:flex-row md:items-center gap-6">
-          <p className="text-brand-gray-dark text-lg md:text-xl font-light">
-            Data Scientist <span className="mx-2">|</span> AI/ML <span className="mx-2">|</span> Cloud <span className="mx-2">|</span> Data Engineering
-          </p>
+          <motion.div variants={itemVariants} className="mt-12 max-w-sm ml-2 md:ml-4 border-l-4 border-background pl-6">
+            <p className="text-xl md:text-2xl font-medium leading-tight">
+              A freelance Data Scientist & Cloud Architect based in Mumbai.
+            </p>
+            <p className="mt-4 text-base opacity-80">
+              Specializing in contemporary AI systems, I bring complex data to life with purposeful, scalable solutions.
+            </p>
+          </motion.div>
         </motion.div>
 
+        {/* Right Side: Portrait with Stylized CSS Cutout Effect */}
         <motion.div 
-          variants={itemVariants}
-          className="absolute bottom-12 left-6 md:left-12 flex items-center gap-4"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+          className="w-full md:w-2/5 absolute right-0 bottom-0 md:h-[90vh] flex justify-end items-end z-10 pointer-events-none"
         >
-          <div className="flex h-3 w-3 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-orange"></span>
-          </div>
-          <p className="text-sm font-medium tracking-wider uppercase text-brand-gray-dark">
-            Currently building • experimenting • shipping
-          </p>
+          {/* Using mix-blend-multiply on a bright image creates a dramatic silhouette effect against the colorful background */}
+          <img 
+            src="https://github.com/littleDataChamp.png" 
+            alt="Ketan Sonar"
+            className="h-full w-auto object-cover object-bottom opacity-90 scale-125 md:scale-150 origin-bottom right-0 mix-blend-multiply filter contrast-125 brightness-75 grayscale"
+            style={{ 
+              maskImage: "linear-gradient(to top, black 80%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to top, black 80%, transparent 100%)"
+            }}
+          />
         </motion.div>
-      </motion.div>
+
+      </div>
     </section>
   );
 }
