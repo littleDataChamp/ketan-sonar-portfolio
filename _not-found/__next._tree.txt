@@ -1,2 +1,2 @@
-:HL["/ketan-sonar-portfolio/_next/static/chunks/3rf_owyxlq1wh.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"HBXycgH8Hsj1mwaItT_a9"}
+:HL["/ketan-sonar-portfolio/_next/static/chunks/29gfp81lcpa8p.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"zrmt2EcVEBzjr_LUW1dw8"}
