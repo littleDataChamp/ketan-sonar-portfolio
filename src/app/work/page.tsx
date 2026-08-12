@@ -20,23 +20,37 @@ export default function WorkPage() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    const getTotalScroll = () => track.scrollWidth - section.offsetWidth;
+    const updateHeight = () => {
+      if (!section || !track) return;
+      const scrollWidth = track.scrollWidth;
+      const windowWidth = window.innerWidth;
+      // The height of the section is the viewport height + the horizontal distance to scroll
+      section.style.height = `${scrollWidth - windowWidth + window.innerHeight}px`;
+    };
+
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
 
     const ctx = gsap.context(() => {
+      const totalScroll = track.scrollWidth - window.innerWidth;
+      
       gsap.to(track, {
-        x: () => -getTotalScroll(),
+        x: () => -(track.scrollWidth - window.innerWidth),
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          pin: true,
+          start: "top top",
+          end: "bottom bottom",
           scrub: 1,
-          end: () => `+=${getTotalScroll()}`,
           invalidateOnRefresh: true,
         },
       });
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -54,9 +68,10 @@ export default function WorkPage() {
       </section>
 
       {/* Horizontal Scroll Section */}
-      <section ref={sectionRef} className="relative overflow-hidden">
-        <div ref={trackRef} className="flex gap-8 md:gap-12 px-6 md:px-12 py-12" style={{ width: 'max-content' }}>
-          {projects.map((project) => (
+      <section ref={sectionRef} className="relative">
+        <div className="sticky top-0 h-[100svh] w-full flex flex-col justify-center overflow-hidden">
+          <div ref={trackRef} className="flex flex-nowrap items-center gap-8 md:gap-12 px-6 md:px-12 w-max">
+            {projects.map((project) => (
             <Link
               key={project.slug}
               href={`/work/${project.slug}`}
@@ -80,6 +95,7 @@ export default function WorkPage() {
               </div>
             </Link>
           ))}
+          </div>
         </div>
       </section>
 
