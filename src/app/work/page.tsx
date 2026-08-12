@@ -20,17 +20,17 @@ export default function WorkPage() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    const totalScroll = track.scrollWidth - section.offsetWidth;
+    const getTotalScroll = () => track.scrollWidth - section.offsetWidth;
 
     const ctx = gsap.context(() => {
       gsap.to(track, {
-        x: -totalScroll,
+        x: () => -getTotalScroll(),
         ease: "none",
         scrollTrigger: {
           trigger: section,
           pin: true,
           scrub: 1,
-          end: () => `+=${totalScroll}`,
+          end: () => `+=${getTotalScroll()}`,
           invalidateOnRefresh: true,
         },
       });
