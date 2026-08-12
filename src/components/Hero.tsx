@@ -64,9 +64,9 @@ export default function Hero() {
         >
           {/* Using mix-blend-multiply on a bright image creates a dramatic silhouette effect against the colorful background */}
           <img 
-            src="https://github.com/littleDataChamp.png" 
+            src="/ketan-sonar-portfolio/images/profile.png" 
             alt="Ketan Sonar"
-            className="h-full w-auto object-cover object-bottom opacity-90 scale-125 md:scale-150 origin-bottom right-0 mix-blend-multiply filter contrast-125 brightness-75 grayscale"
+            className="h-[80vh] md:h-full w-auto object-cover object-bottom opacity-100 scale-110 origin-bottom right-0 mix-blend-multiply filter contrast-125 brightness-90 grayscale"
             style={{ 
               maskImage: "linear-gradient(to top, black 80%, transparent 100%)",
               WebkitMaskImage: "linear-gradient(to top, black 80%, transparent 100%)"

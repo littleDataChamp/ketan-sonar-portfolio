@@ -38,7 +38,7 @@ const projects = [
     subtitle: "Biometric Feature Detection",
     category: "Computer Vision",
     description: "High-accuracy biometric identification pipelines for secure environments.",
-    image: null,
+    image: "/ketan-sonar-portfolio/images/project_cv.png",
     href: "#",
   },
   {
@@ -47,7 +47,7 @@ const projects = [
     subtitle: "Private Couple Planner",
     category: "Full-Stack / Product",
     description: "A personal product built with modern web technologies.",
-    image: null,
+    image: "/ketan-sonar-portfolio/images/project_safark.png",
     href: "https://safark.lovable.app/",
   },
 ];
@@ -158,7 +158,7 @@ function ProjectCard({ project, isHovered, onHover, onLeave }: any) {
             <h4 className="text-xl md:text-2xl font-light text-brand-gray-dark mb-6 group-hover:translate-x-4 transition-transform duration-500 delay-75">
               {project.subtitle}
             </h4>
-            <p className="text-base md:text-lg text-brand-charcoal max-w-2xl font-light leading-relaxed opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+            <p className="text-base md:text-lg text-brand-charcoal max-w-2xl font-light leading-relaxed opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 delay-100 max-h-0 group-hover:max-h-40 overflow-hidden">
               {project.description}
             </p>
           </div>
