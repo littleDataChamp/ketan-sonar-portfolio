@@ -51,21 +51,21 @@ export default function Navigation() {
         )}
       >
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-          <Link href="/" className="flex flex-col items-start leading-none font-display font-black text-lg md:text-xl tracking-tighter hover:opacity-70 transition-opacity border-2 border-foreground px-2 py-1 rounded-sm bg-transparent">
+          <Link href="/" className="flex flex-col items-start leading-none font-display font-black text-lg md:text-xl tracking-tighter text-black hover:opacity-70 transition-opacity border border-black px-2 py-1 rounded-sm bg-white">
             <span>for</span>
             <span>data</span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 items-center">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium tracking-wide hover:text-brand-orange transition-colors relative group"
+                className="text-sm font-bold tracking-wide text-black hover:opacity-70 transition-colors relative group flex items-center gap-1"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-orange transition-all duration-300 group-hover:w-full" />
+                {link.name === "Services" && <span className="bg-black text-white rounded-full text-[9px] w-[14px] h-[14px] flex items-center justify-center font-bold mb-2">0</span>}
               </Link>
             ))}
           </div>
