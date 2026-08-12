@@ -85,7 +85,22 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, isHovered, onHover, onLeave }: any) {
+interface ProjectCardProps {
+  project: {
+    num: string;
+    title: string;
+    subtitle: string;
+    category: string;
+    description: string;
+    image: string | null;
+    href: string;
+  };
+  isHovered: boolean;
+  onHover: () => void;
+  onLeave: () => void;
+}
+
+function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps) {
   const ref = useRef<HTMLAnchorElement>(null);
   
   // Sleek Parallax effect on mouse move
