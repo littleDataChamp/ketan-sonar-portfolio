@@ -88,7 +88,7 @@ export default function Navigation() {
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className={cn(
-          "fixed inset-0 z-40 bg-background flex flex-col justify-center items-center",
+          "fixed inset-0 z-40 bg-background/95 backdrop-blur-xl flex flex-col justify-center items-center",
           mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         )}
       >
