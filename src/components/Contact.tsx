@@ -75,7 +75,7 @@ export default function Contact() {
                   <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                 </a>
                 <a 
-                  href="#"
+                  href="https://github.com/littleDataChamp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xl md:text-2xl font-medium hover:text-brand-orange transition-colors flex items-center justify-between group border-b border-brand-gray pb-2"
