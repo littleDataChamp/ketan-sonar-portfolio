@@ -15,12 +15,28 @@ export default function About() {
     <section id="about" className="py-24 md:py-48 px-6 md:px-12">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-24">
         
-        <div className="md:w-1/2">
+        <div className="md:w-1/2 flex flex-col items-start">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-12 border-4 border-brand-orange/20 relative group"
+          >
+            {/* The image points to your GitHub profile picture which is public! */}
+            <img 
+              src="https://github.com/littleDataChamp.png" 
+              alt="Ketan Sonar"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-brand-orange/10 group-hover:bg-transparent transition-colors duration-500" />
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-xl font-medium tracking-wide text-brand-gray-dark mb-6">
               ABOUT KETAN
@@ -37,11 +53,11 @@ export default function About() {
               Based in Mumbai, India.
             </p>
             
-            <p className="text-lg md:text-2xl font-light text-brand-charcoal max-w-xl leading-relaxed mb-8">
+            <p className="text-lg md:text-xl font-light text-brand-charcoal max-w-xl leading-relaxed mb-8">
               Ketan works across Data Science, Machine Learning, AI, Cloud infrastructure, analytics, and data systems.
             </p>
             
-            <p className="text-lg md:text-2xl font-light text-brand-charcoal max-w-xl leading-relaxed">
+            <p className="text-lg md:text-xl font-light text-brand-charcoal max-w-xl leading-relaxed">
               He is interested in turning messy real-world problems into practical, scalable technology.
             </p>
           </motion.div>

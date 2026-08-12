@@ -40,7 +40,7 @@ export default function Hero() {
         
         <motion.h1 
           variants={itemVariants}
-          className="font-display font-bold text-6xl md:text-8xl lg:text-[9rem] leading-[0.9] tracking-tighter mb-4"
+          className="font-display font-bold text-[4rem] md:text-8xl lg:text-[9rem] leading-[0.9] tracking-tighter mb-4"
         >
           DATA.<br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-purple">AI.</span><br />

@@ -7,8 +7,8 @@ export default function Sonar() {
     <section className="py-32 md:py-48 px-6 md:px-12 bg-brand-charcoal text-background relative overflow-hidden">
       
       {/* Background large text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 w-full text-center pointer-events-none">
-        <h2 className="text-[15rem] md:text-[30rem] font-display font-bold leading-none tracking-tighter">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 w-full text-center pointer-events-none overflow-hidden flex justify-center">
+        <h2 className="text-[8rem] md:text-[20rem] lg:text-[25rem] font-display font-bold leading-none tracking-tighter whitespace-nowrap">
           SONAR
         </h2>
       </div>

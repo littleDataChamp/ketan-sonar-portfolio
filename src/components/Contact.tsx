@@ -13,7 +13,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-8xl lg:text-[9rem] font-display font-bold tracking-tighter leading-[0.85] mb-12"
+            className="text-5xl md:text-7xl lg:text-[8rem] font-display font-bold tracking-tighter leading-[0.85] mb-12"
           >
             LET&apos;S BUILD<br />
             SOMETHING<br />
