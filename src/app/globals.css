@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-background: #FDFCF8; /* Warm off-white */
+  --color-brand-foreground: #0A0A0A; /* Deep black */
+  --color-brand-charcoal: #1F1F1F;
+  --color-brand-gray: #E5E5E5;
+  --color-brand-gray-dark: #8C8C8C;
+  --color-brand-orange: #FF9900; /* AWS Orange */
+  --color-brand-blue: #0052CC; /* Deep blue */
+  --color-brand-purple: #7048E8; /* Electric purple */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-syncopate);
+}
+
+:root {
+  --background: #FDFCF8;
+  --foreground: #0A0A0A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #050505;
+    --foreground: #FDFCF8;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-gray-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-charcoal);
+}
+
+/* Lenis smooth scroll */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Hide default cursor on desktop when using custom cursor */
+@media (min-width: 1024px) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+::selection {
+  background-color: var(--color-brand-orange);
+  color: #fff;
+}
