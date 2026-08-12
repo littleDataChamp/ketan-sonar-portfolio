@@ -151,14 +151,14 @@ function ProjectCard({ project, isHovered, onHover, onLeave }: any) {
 
         {/* Content & Image */}
         <div className="lg:w-3/4 w-full relative">
-          <div className="relative z-10">
-            <h3 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold tracking-tighter leading-[1.1] mb-4 group-hover:translate-x-4 transition-transform duration-500">
+          <div className="relative z-10 md:max-w-[50%]">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tighter leading-[1.1] mb-4 group-hover:translate-x-4 transition-transform duration-500">
               {project.title}
             </h3>
             <h4 className="text-xl md:text-2xl font-light text-brand-gray-dark mb-6 group-hover:translate-x-4 transition-transform duration-500 delay-75">
               {project.subtitle}
             </h4>
-            <p className="text-base md:text-lg text-brand-charcoal max-w-2xl font-light leading-relaxed opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 delay-100 max-h-0 group-hover:max-h-40 overflow-hidden">
+            <p className="text-base md:text-lg text-brand-charcoal font-light leading-relaxed opacity-0 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 delay-100 max-h-0 group-hover:max-h-40 overflow-hidden pr-4">
               {project.description}
             </p>
           </div>

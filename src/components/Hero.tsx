@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import Typewriter from "./Typewriter";
 
 export default function Hero() {
   const containerVariants: Variants = {
@@ -45,13 +46,18 @@ export default function Hero() {
             DATA
           </motion.h1>
 
-          <motion.div variants={itemVariants} className="mt-8 md:mt-12 max-w-sm ml-1 md:ml-4 border-l-4 border-foreground pl-4 md:pl-6">
+          <motion.div variants={itemVariants} className="mt-8 md:mt-12 max-w-sm ml-1 md:ml-4 border-l-4 border-foreground pl-4 md:pl-6 min-h-[120px]">
             <p className="text-lg md:text-2xl font-medium leading-tight text-foreground">
-              A Data Scientist & Cloud Architect based in Mumbai.
+              <Typewriter text="A Data Scientist & Cloud Architect based in Mumbai." delay={1.5} />
             </p>
-            <p className="mt-2 md:mt-4 text-sm md:text-base opacity-80 text-foreground">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.8 }}
+              transition={{ delay: 4, duration: 1 }}
+              className="mt-2 md:mt-4 text-sm md:text-base text-foreground"
+            >
               Specializing in contemporary AI systems, I bring complex data to life with purposeful, scalable solutions.
-            </p>
+            </motion.p>
           </motion.div>
         </motion.div>
 
