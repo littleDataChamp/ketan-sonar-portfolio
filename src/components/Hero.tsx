@@ -81,7 +81,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-          className="w-full md:w-[45%] absolute right-0 md:right-[15%] bottom-0 h-[60vh] md:h-[85vh] flex justify-center md:justify-end items-end z-20 pointer-events-none"
+          className="w-full md:w-[45%] absolute right-0 md:right-[15%] -bottom-12 h-[60vh] md:h-[85vh] flex justify-center md:justify-end items-end z-20 pointer-events-none"
         >
           {/* Clean cutout image matching mockup */}
           <img 
