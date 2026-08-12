@@ -7,10 +7,11 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "WORK", href: "/projects" },
-  { name: "ABOUT", href: "/about" },
-  { name: "EXPERIENCE", href: "/experience" },
-  { name: "CONTACT", href: "/contact" },
+  { name: "Services", href: "#" },
+  { name: "Solutions", href: "#" },
+  { name: "About", href: "/about" },
+  { name: "Work", href: "/projects" },
+  { name: "Let's talk ↗", href: "/contact" },
 ];
 
 export default function Navigation() {
@@ -50,8 +51,9 @@ export default function Navigation() {
         )}
       >
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-          <Link href="/" className="text-xl font-display font-bold tracking-tighter hover:opacity-70 transition-opacity">
-            KETAN SONAR
+          <Link href="/" className="flex flex-col items-start leading-none font-display font-black text-lg md:text-xl tracking-tighter hover:opacity-70 transition-opacity border-2 border-foreground px-2 py-1 rounded-sm bg-transparent">
+            <span>for</span>
+            <span>data</span>
           </Link>
 
           {/* Desktop Nav */}
