@@ -1,67 +1,88 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export default function Cursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const [label, setLabel] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const mouse = useRef({ x: 0, y: 0 });
+  const pos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Enable custom cursor styles on body
-    document.body.classList.add("custom-cursor-active");
+    // Don't show on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    setIsVisible(true);
+    document.body.classList.add('custom-cursor-active');
 
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const onMove = (e: MouseEvent) => {
+      mouse.current = { x: e.clientX, y: e.clientY };
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
+    const onOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (
-        target.tagName.toLowerCase() === "a" ||
-        target.tagName.toLowerCase() === "button" ||
-        target.closest("a") ||
-        target.closest("button") ||
-        target.classList.contains("cursor-pointer")
+      const cursorAttr = target.closest('[data-cursor]')?.getAttribute('data-cursor');
+      if (cursorAttr) {
+        setLabel(cursorAttr);
+      } else if (
+        target.tagName === 'A' || target.tagName === 'BUTTON' ||
+        target.closest('a') || target.closest('button')
       ) {
-        setIsHovering(true);
+        setLabel('');
       } else {
-        setIsHovering(false);
+        setLabel('');
       }
     };
 
-    window.addEventListener("mousemove", updateMousePosition);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseover', onOver);
+
+    // Lerp animation loop
+    let raf: number;
+    const animate = () => {
+      pos.current.x += (mouse.current.x - pos.current.x) * 0.15;
+      pos.current.y += (mouse.current.y - pos.current.y) * 0.15;
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px)`;
+      }
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
 
     return () => {
-      document.body.classList.remove("custom-cursor-active");
-      window.removeEventListener("mousemove", updateMousePosition);
-      window.removeEventListener("mouseover", handleMouseOver);
+      document.body.classList.remove('custom-cursor-active');
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseover', onOver);
+      cancelAnimationFrame(raf);
     };
   }, []);
 
+  if (!isVisible) return null;
+
+  const hasLabel = label.length > 0;
+
   return (
-    <motion.div
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-brand-orange pointer-events-none z-[100] mix-blend-difference hidden lg:block"
-      animate={{
-        x: mousePosition.x - 16,
-        y: mousePosition.y - 16,
-        scale: isHovering ? 1.5 : 1,
-        backgroundColor: isHovering ? "rgba(255, 153, 0, 0.2)" : "transparent",
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 500,
-        damping: 28,
-        mass: 0.5,
-      }}
+    <div
+      ref={cursorRef}
+      className="fixed top-0 left-0 pointer-events-none z-[100] hidden lg:block"
+      style={{ willChange: 'transform' }}
     >
-      <motion.div 
-        className="absolute top-1/2 left-1/2 w-1 h-1 bg-brand-orange rounded-full -translate-x-1/2 -translate-y-1/2"
-        animate={{
-          scale: isHovering ? 0 : 1,
-        }}
-      />
-    </motion.div>
+      <div
+        ref={dotRef}
+        className={`flex items-center justify-center rounded-full border-2 border-brand-orange mix-blend-difference transition-all duration-300 ease-out ${
+          hasLabel ? 'w-20 h-20 -ml-10 -mt-10 bg-brand-orange/20' : 'w-8 h-8 -ml-4 -mt-4 bg-transparent'
+        }`}
+      >
+        {hasLabel && (
+          <span className="text-white text-[10px] font-bold tracking-widest uppercase">
+            {label}
+          </span>
+        )}
+        {!hasLabel && (
+          <div className="w-1 h-1 bg-brand-orange rounded-full" />
+        )}
+      </div>
+    </div>
   );
 }

@@ -7,11 +7,11 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Services", href: "/#services" },
-  { name: "Solutions", href: "/#solutions" },
-  { name: "About", href: "/#about" },
-  { name: "Work", href: "/#work" },
-  { name: "Let's talk ↗", href: "/#contact" },
+  { name: "About", href: "/about" },
+  { name: "Experience", href: "/experience" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/work" },
+  { name: "Let's talk \u2197", href: "/contact" },
 ];
 
 export default function Navigation() {
@@ -22,41 +22,16 @@ export default function Navigation() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
-    
-    if (latest > 50) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-
-    if (latest > 150 && latest > previous && !mobileMenuOpen) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
+    if (latest > 50) setScrolled(true);
+    else setScrolled(false);
+    if (latest > 150 && latest > previous && !mobileMenuOpen) setHidden(true);
+    else setHidden(false);
   });
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    setMobileMenuOpen(false);
-    
-    // Handle hash navigation for same-page scroll
-    if (href.startsWith('/#')) {
-      e.preventDefault();
-      const id = href.replace('/#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  };
 
   return (
     <>
       <motion.nav
-        variants={{
-          visible: { y: 0 },
-          hidden: { y: "-100%" },
-        }}
+        variants={{ visible: { y: 0 }, hidden: { y: "-100%" } }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={cn(
@@ -70,22 +45,19 @@ export default function Navigation() {
             <span>data</span>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex space-x-8 items-center">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-bold tracking-wide text-black hover:opacity-60 transition-opacity relative group flex items-center gap-1"
+                className="text-sm font-bold tracking-wide text-black hover:opacity-60 transition-opacity"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button 
+          <button
             className="md:hidden z-50 relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Menu"
@@ -95,12 +67,11 @@ export default function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
       <motion.div
         initial={{ opacity: 0, clipPath: "circle(0% at 100% 0)" }}
-        animate={{ 
+        animate={{
           opacity: mobileMenuOpen ? 1 : 0,
-          clipPath: mobileMenuOpen ? "circle(150% at 100% 0)" : "circle(0% at 100% 0)"
+          clipPath: mobileMenuOpen ? "circle(150% at 100% 0)" : "circle(0% at 100% 0)",
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className={cn(
@@ -108,21 +79,30 @@ export default function Navigation() {
           mobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         )}
       >
-        <div className="flex flex-col space-y-8 text-center">
+        <div className="flex flex-col space-y-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={mobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
+          >
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-3xl font-display font-bold text-black hover:text-brand-orange transition-colors">
+              Home
+            </Link>
+          </motion.div>
           {navLinks.map((link, i) => (
             <motion.div
               key={link.name}
               initial={{ opacity: 0, y: 20 }}
               animate={mobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.3, delay: 0.1 + i * 0.1 }}
+              transition={{ duration: 0.3, delay: 0.1 + i * 0.08 }}
             >
-              <a
+              <Link
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-3xl font-display font-bold text-black hover:text-brand-orange transition-colors"
               >
                 {link.name}
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>

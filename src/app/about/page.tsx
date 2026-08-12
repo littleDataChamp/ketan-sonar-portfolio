@@ -1,13 +1,13 @@
 import About from "@/components/About";
-import Experience from "@/components/Experience";
-import Achievements from "@/components/Achievements";
+import Skills from "@/components/Skills";
+import Philosophy from "@/components/Philosophy";
 
 export default function AboutPage() {
   return (
     <div className="pt-24">
       <About />
-      <Experience />
-      <Achievements />
+      <Philosophy />
+      <Skills />
     </div>
   );
 }
