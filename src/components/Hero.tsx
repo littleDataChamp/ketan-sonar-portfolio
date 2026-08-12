@@ -69,15 +69,15 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Side Bottom: Description & Icon */}
+        {/* Right Side Bottom: Description & Icon — z-30 keeps it above portrait */}
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 2.5 }}
-          className="absolute right-6 md:right-12 bottom-12 md:bottom-16 w-48 md:w-56 z-30 hidden md:block"
+          className="absolute right-6 md:right-12 bottom-16 md:bottom-20 w-48 md:w-56 z-30 hidden md:block"
         >
           <ArrowDownRight size={28} className="text-white mb-3" strokeWidth={2.5} />
-          <p className="text-sm font-bold text-white leading-snug">
+          <p className="text-sm font-bold text-white leading-snug drop-shadow-md">
             I help businesses turn complex data into clear insights and build AI systems that drive real impact.
           </p>
         </motion.div>
@@ -89,7 +89,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-        className="absolute right-[5%] sm:right-[10%] md:right-[12%] lg:right-[15%] bottom-0 h-[50vh] sm:h-[55vh] md:h-[80vh] lg:h-[88vh] flex items-end z-20 pointer-events-none"
+        className="absolute right-[2%] sm:right-[8%] md:right-[10%] lg:right-[13%] bottom-0 h-[55vh] sm:h-[62vh] md:h-[85vh] lg:h-[92vh] flex items-end z-20 pointer-events-none"
       >
         <img 
           src="/ketan-sonar-portfolio/images/profile.png" 
